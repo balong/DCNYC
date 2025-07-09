@@ -21,7 +21,7 @@ const MarkerClusterGroup = ({ children }: MarkerClusterGroupProps) => {
     const markers = L.layerGroup();
     
     Children.forEach(children, (child) => {
-        if (isValidElement<{ position: L.LatLngExpression, icon: L.Icon | L.DivIcon, eventHandlers?: any, children: ReactElement }>(child)) {
+        if (isValidElement<{ position: L.LatLngExpression, icon: L.Icon | L.DivIcon, eventHandlers?: L.LeafletEventHandlerFnMap, children: ReactElement }>(child)) {
             let popupContent = '';
             const popupChild = child.props.children;
             if(isValidElement<{children: string}>(popupChild)) {
