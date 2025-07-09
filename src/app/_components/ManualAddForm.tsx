@@ -23,11 +23,11 @@ export default function ManualAddForm() {
         <form action={formAction} className="mt-4 border-t pt-4">
              <h3 className="text-lg font-bold mb-2">Add Manually</h3>
             <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="name">
                     Restaurant Name
                 </label>
                 <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
                     id="name"
                     name="name"
                     type="text"
@@ -35,7 +35,7 @@ export default function ManualAddForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
+                <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="address">
                     Full Address
                 </label>
                 <input
