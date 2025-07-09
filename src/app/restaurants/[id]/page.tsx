@@ -3,13 +3,21 @@ import { notFound } from 'next/navigation';
 import AddReviewForm from '@/app/_components/AddReviewForm';
 import Link from 'next/link';
 
-export default async function RestaurantPage({ params }: { params: { id: string } }) {
+// Define the type for the props, acknowledging params is a Promise in Next.js 15+
+type RestaurantPageProps = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function RestaurantPage(props: RestaurantPageProps) {
+  // Await the params promise to get the actual values
+  const { id } = await props.params;
+  
   const supabase = createClient();
 
   const { data: restaurant } = await supabase
     .from('restaurants')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single();
 
   if (!restaurant) {
@@ -19,7 +27,7 @@ export default async function RestaurantPage({ params }: { params: { id: string 
   const { data: reviews } = await supabase
     .from('reviews')
     .select('*')
-    .eq('restaurant_id', params.id)
+    .eq('restaurant_id', id)
     .order('created_at', { ascending: false });
 
   return (
