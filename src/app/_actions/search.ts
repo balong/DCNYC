@@ -21,7 +21,7 @@ interface SearchResult {
     externalResults: Place[];
 }
 
-export async function search(prevState: any, formData: FormData): Promise<SearchResult> {
+export async function search(prevState: SearchResult, formData: FormData): Promise<SearchResult> {
   const validatedFields = SearchSchema.safeParse({
     query: formData.get('query'),
   });

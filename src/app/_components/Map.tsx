@@ -11,8 +11,13 @@ import { RestaurantWithDetails } from '../_lib/types';
 import { useRouter } from 'next/navigation';
 import { styleColors } from './FilterControls';
 
+// leaflet type augmentation for a private property
+type LeafletIconDefault = L.Icon.Default & {
+    _getIconUrl?: string;
+};
+
 // Fix for default icon issue with webpack
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+delete (L.Icon.Default.prototype as LeafletIconDefault)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
@@ -30,7 +35,6 @@ export default function Map({ restaurants, searchResults }: MapProps) {
 
     useEffect(() => {
         if (mapRef.current && searchResults && searchResults.length > 0) {
-            const L = require('leaflet'); // needed for L.latLngBounds
             const bounds = L.latLngBounds(searchResults.map(r => [r.lat, r.lng]));
             mapRef.current.fitBounds(bounds, { padding: [50, 50] });
         }

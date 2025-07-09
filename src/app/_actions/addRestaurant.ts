@@ -21,7 +21,7 @@ export async function addRestaurant(place: Place) {
   const supabase = createClient();
 
   // First, check if this restaurant already exists
-  let { data: existingRestaurant } = await supabase
+  const { data: existingRestaurant } = await supabase
     .from('restaurants')
     .select('id')
     .eq('name', name)

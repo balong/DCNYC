@@ -4,6 +4,10 @@ import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
+interface FormState {
+  message: string;
+}
+
 const FormSchema = z.object({
   restaurantId: z.string().uuid(),
   rating: z.coerce.number().min(0).max(5),
@@ -15,7 +19,7 @@ const FormSchema = z.object({
   free_refills: z.coerce.boolean().default(false),
 });
 
-export async function addReview(prevState: any, formData: FormData) {
+export async function addReview(prevState: FormState, formData: FormData) {
   const validatedFields = FormSchema.safeParse({
     restaurantId: formData.get('restaurantId'),
     rating: formData.get('rating'),

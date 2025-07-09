@@ -6,12 +6,16 @@ import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { isPointInNYC } from '@/lib/utils';
 
+interface FormState {
+  message: string;
+}
+
 const ManualAddSchema = z.object({
   name: z.string().min(1, { message: "Name is required." }),
   address: z.string().min(5, { message: "A full address is required." }),
 });
 
-export async function manualAddRestaurant(prevState: any, formData: FormData) {
+export async function manualAddRestaurant(prevState: FormState, formData: FormData) {
   const validatedFields = ManualAddSchema.safeParse({
     name: formData.get('name'),
     address: formData.get('address'),
@@ -63,7 +67,7 @@ export async function manualAddRestaurant(prevState: any, formData: FormData) {
   const supabase = createClient();
 
   // 2. Check if restaurant already exists
-  let { data: existingRestaurant } = await supabase
+  const { data: existingRestaurant } = await supabase
     .from('restaurants')
     .select('id')
     .eq('name', name)
