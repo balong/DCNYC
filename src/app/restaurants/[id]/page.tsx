@@ -1,7 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
-import AddReviewForm from '@/app/_components/AddReviewForm';
 import Link from 'next/link';
+import ReviewSection from '@/app/_components/ReviewSection';
+import { type Review } from '@/app/_lib/types';
 
 // Define the type for the props, acknowledging params is a Promise in Next.js 15+
 type RestaurantPageProps = {
@@ -37,30 +38,7 @@ export default async function RestaurantPage(props: RestaurantPageProps) {
             <h1 className="text-4xl font-bold mb-2 text-gray-900">{restaurant.name}</h1>
             <p className="text-lg text-gray-900 mb-8">{restaurant.address}</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                    <h2 className="text-2xl font-bold text-gray-900">Reviews</h2>
-                    {reviews && reviews.length > 0 ? (
-                    reviews.map((review) => (
-                        <div key={review.id} className="bg-white shadow-md rounded-lg p-4">
-                        <div className="flex justify-between items-center mb-2">
-                            <p className="text-xl font-semibold text-gray-900">Rating: {Number(review.rating).toFixed(1)}/5</p>
-                            <p className="text-md capitalize text-gray-800">{review.style}</p>
-                        </div>
-                        <p className="text-gray-800">{review.notes || 'No notes for this review.'}</p>
-                        <p className="text-xs text-gray-500 mt-2">
-                            Reviewed on {new Date(review.created_at).toLocaleDateString()}
-                        </p>
-                        </div>
-                    ))
-                    ) : (
-                    <p>No reviews for this restaurant yet.</p>
-                    )}
-                </div>
-                <div>
-                    <AddReviewForm restaurantId={restaurant.id} />
-                </div>
-            </div>
+            <ReviewSection restaurantId={restaurant.id} initialReviews={reviews as Review[] ?? []} />
         </div>
     </main>
   );
