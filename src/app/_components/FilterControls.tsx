@@ -28,7 +28,7 @@ export function FilterControls({ setStyleFilter, setRatingFilter }: FilterContro
                 <select
                     id="style-filter"
                     name="style-filter"
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"
                     defaultValue="all"
                     onChange={(e) => setStyleFilter(e.target.value as Style | 'all')}
                 >
@@ -42,17 +42,18 @@ export function FilterControls({ setStyleFilter, setRatingFilter }: FilterContro
                 <label htmlFor="rating-filter" className="block text-sm font-medium text-gray-900">
                     Min Rating
                 </label>
-                <input
-                    type="number"
+                <select
                     id="rating-filter"
                     name="rating-filter"
-                    min="0"
-                    max="5"
-                    step="0.5"
+                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-gray-900"
                     defaultValue="0"
-                    className="mt-1 block w-full pl-3 pr-2 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     onChange={(e) => setRatingFilter(Number(e.target.value))}
-                />
+                >
+                    <option value="0">Any</option>
+                    {Array.from({ length: 9 }, (_, i) => 5 - i * 0.5).map(score => (
+                        <option key={score} value={score}>{score.toFixed(1)}+</option>
+                    ))}
+                </select>
             </div>
         </div>
     );

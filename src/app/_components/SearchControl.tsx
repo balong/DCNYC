@@ -36,10 +36,9 @@ export default function SearchControl({ onLocalResults }: SearchControlProps) {
 
     // Effect to determine if we should show the manual add form
     useEffect(() => {
-        const { localResults, externalResults, message } = searchState;
-        // The form should appear if a search has been completed (message is not empty)
-        // and no results of any kind were found.
-        if (message && localResults.length === 0 && externalResults.length === 0) {
+        const { message } = searchState;
+        // The form should appear if a search has been completed
+        if (message) {
             setShowManualForm(true);
         } else {
             setShowManualForm(false);
@@ -81,7 +80,7 @@ export default function SearchControl({ onLocalResults }: SearchControlProps) {
                      <ul className="mt-4 space-y-2">
                         {searchState.externalResults.map((place) => (
                             <li key={place.osm_id} className="border-b last:border-b-0 py-2 flex justify-between items-center text-sm">
-                                <span>{place.display_name}</span>
+                                <span className="text-gray-800">{place.display_name}</span>
                                 <button
                                     onClick={() => handleAddClick(place)}
                                     disabled={isPending}
@@ -94,7 +93,12 @@ export default function SearchControl({ onLocalResults }: SearchControlProps) {
                     </ul>
                 )}
 
-                {showManualForm && <ManualAddForm />}
+                {showManualForm && (
+                    <div className="mt-6 pt-4 border-t">
+                         <h3 className="text-lg font-semibold mb-2 text-gray-800">Can't find it?</h3>
+                        <ManualAddForm />
+                    </div>
+                )}
             </div>
         </div>
     )
