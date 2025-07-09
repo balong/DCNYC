@@ -3,13 +3,7 @@ import { notFound } from 'next/navigation';
 import AddReviewForm from '@/app/_components/AddReviewForm';
 import Link from 'next/link';
 
-type RestaurantPageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default async function RestaurantPage({ params }: RestaurantPageProps) {
+export default async function RestaurantPage({ params }: { params: { id: string } }) {
   const supabase = createClient();
 
   const { data: restaurant } = await supabase
