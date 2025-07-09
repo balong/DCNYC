@@ -31,35 +31,37 @@ export default async function RestaurantPage(props: RestaurantPageProps) {
     .order('created_at', { ascending: false });
 
   return (
-    <main className="container mx-auto p-4 lg:p-12 relative">
-        <Link href="/" className="absolute top-4 right-4 text-2xl font-bold text-gray-800 hover:text-black">&times;</Link>
-      <h1 className="text-4xl font-bold mb-2 text-gray-900">{restaurant.name}</h1>
-      <p className="text-lg text-gray-900 mb-8">{restaurant.address}</p>
+    <main className="bg-gray-50 min-h-screen">
+        <div className="container mx-auto p-4 lg:p-12 relative">
+            <Link href="/" className="absolute top-4 right-4 text-2xl font-bold text-gray-800 hover:text-black">&times;</Link>
+            <h1 className="text-4xl font-bold mb-2 text-gray-900">{restaurant.name}</h1>
+            <p className="text-lg text-gray-900 mb-8">{restaurant.address}</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Reviews</h2>
-            {reviews && reviews.length > 0 ? (
-            reviews.map((review) => (
-                <div key={review.id} className="bg-white shadow-md rounded-lg p-4">
-                <div className="flex justify-between items-center mb-2">
-                    <p className="text-xl font-semibold text-gray-900">Rating: {Number(review.rating).toFixed(1)}/5</p>
-                    <p className="text-md capitalize text-gray-800">{review.style}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                    <h2 className="text-2xl font-bold text-gray-900">Reviews</h2>
+                    {reviews && reviews.length > 0 ? (
+                    reviews.map((review) => (
+                        <div key={review.id} className="bg-white shadow-md rounded-lg p-4">
+                        <div className="flex justify-between items-center mb-2">
+                            <p className="text-xl font-semibold text-gray-900">Rating: {Number(review.rating).toFixed(1)}/5</p>
+                            <p className="text-md capitalize text-gray-800">{review.style}</p>
+                        </div>
+                        <p className="text-gray-800">{review.notes || 'No notes for this review.'}</p>
+                        <p className="text-xs text-gray-500 mt-2">
+                            Reviewed on {new Date(review.created_at).toLocaleDateString()}
+                        </p>
+                        </div>
+                    ))
+                    ) : (
+                    <p>No reviews for this restaurant yet.</p>
+                    )}
                 </div>
-                <p className="text-gray-800">{review.notes || 'No notes for this review.'}</p>
-                <p className="text-xs text-gray-500 mt-2">
-                    Reviewed on {new Date(review.created_at).toLocaleDateString()}
-                </p>
+                <div>
+                    <AddReviewForm restaurantId={restaurant.id} />
                 </div>
-            ))
-            ) : (
-            <p>No reviews for this restaurant yet.</p>
-            )}
+            </div>
         </div>
-        <div>
-            <AddReviewForm restaurantId={restaurant.id} />
-        </div>
-      </div>
     </main>
   );
 } 
