@@ -45,7 +45,7 @@ export default function HomePageClient({ allRestaurants }: { allRestaurants: Res
     const restaurantsToShow = searchResults && searchResults.length > 0 ? searchResults : filteredRestaurants;
 
     return (
-        <div className="h-full">
+        <div className="relative h-full overflow-hidden">
             <Sidebar 
                 isOpen={isSidebarOpen}
                 setIsOpen={setIsSidebarOpen}
@@ -53,19 +53,18 @@ export default function HomePageClient({ allRestaurants }: { allRestaurants: Res
                 setStyleFilter={setStyleFilter}
                 setRatingFilter={setRatingFilter}
             />
-
-            <div className="h-full md:pl-[33.333333%] lg:pl-[25%] relative z-10">
-                 <button 
-                    onClick={() => setIsSidebarOpen(true)}
-                    className="md:hidden absolute top-4 left-4 z-[1000] bg-white p-2 rounded-md shadow-lg"
-                    aria-label="Open sidebar"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
+            <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="md:hidden absolute top-4 left-4 z-[1000] bg-white p-2 rounded-md shadow-lg"
+                aria-label="Open sidebar"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <main className="h-full relative z-0 md:ml-1/3 lg:ml-1/4">
                 <Map restaurants={restaurantsToShow} searchResults={searchResults} />
-            </div>
+            </main>
         </div>
     )
 } 
