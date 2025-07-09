@@ -17,13 +17,6 @@ interface SidebarProps {
 export default function Sidebar({ isOpen, setIsOpen, onLocalResults, setStyleFilter, setRatingFilter }: SidebarProps) {
     return (
         <>
-            {/* Backdrop for mobile */}
-            <div 
-                className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity md:hidden ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-                onClick={() => setIsOpen(false)}
-                aria-hidden="true"
-            />
-            
             {/* Sidebar */}
             <div className={
                 `fixed top-0 left-0 z-40 h-full w-4/5 max-w-sm transform transition-transform 

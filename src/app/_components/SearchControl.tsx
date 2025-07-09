@@ -75,7 +75,7 @@ export default function SearchControl({ onLocalResults }: SearchControlProps) {
                         <SubmitButton />
                     </div>
                 </form>
-                {searchState.message && <p className="text-sm text-gray-600 mt-2">{searchState.message}</p>}
+                {searchState.message && <p className="text-sm text-gray-800 mt-2">{searchState.message}</p>}
                 
                 {searchState.externalResults.length > 0 && (
                      <ul className="mt-4 space-y-2">
