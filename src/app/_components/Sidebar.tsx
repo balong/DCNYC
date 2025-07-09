@@ -24,9 +24,8 @@ export default function Sidebar({ isOpen, setIsOpen, onLocalResults, setStyleFil
                 md:w-1/3 lg:w-1/4 md:translate-x-0
                 flex flex-col p-4 bg-gray-50 overflow-y-auto space-y-6`
             }>
-                <div className="flex justify-between items-center md:hidden">
-                    <h2 className="text-lg font-bold">Controls</h2>
-                    <button onClick={() => setIsOpen(false)} className="text-2xl font-bold">&times;</button>
+                <div className="flex justify-end items-center md:hidden">
+                    <button onClick={() => setIsOpen(false)} className="text-2xl font-bold text-gray-800">&times;</button>
                 </div>
                 <SearchControl onLocalResults={onLocalResults} />
                 <div className="space-y-4">

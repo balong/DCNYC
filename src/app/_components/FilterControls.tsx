@@ -22,7 +22,7 @@ export function FilterControls({ setStyleFilter, setRatingFilter }: FilterContro
     return (
         <div className="flex flex-col sm:flex-row gap-4">
             <div>
-                <label htmlFor="style-filter" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="style-filter" className="block text-sm font-medium text-gray-900">
                     Filter by Style
                 </label>
                 <select
@@ -39,7 +39,7 @@ export function FilterControls({ setStyleFilter, setRatingFilter }: FilterContro
                 </select>
             </div>
             <div>
-                <label htmlFor="rating-filter" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="rating-filter" className="block text-sm font-medium text-gray-900">
                     Min Rating
                 </label>
                 <input
@@ -61,12 +61,12 @@ export function FilterControls({ setStyleFilter, setRatingFilter }: FilterContro
 export function Legend() {
     return (
         <div className="p-2 bg-white bg-opacity-80 rounded-md shadow-md">
-            <h4 className="font-bold text-sm mb-1">Legend</h4>
+            <h4 className="font-bold text-sm mb-1 text-gray-900">Legend</h4>
             <div className="flex flex-col gap-1">
                 {styles.map(style => (
                     <div key={style} className="flex items-center gap-2">
                         <div className="w-4 h-4 rounded-full" style={{ backgroundColor: styleColors[style] }}></div>
-                        <span className="text-xs capitalize">{style.replace('_', ' ')}</span>
+                        <span className="text-xs capitalize text-gray-800">{style.replace('_', ' ')}</span>
                     </div>
                 ))}
             </div>

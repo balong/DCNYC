@@ -58,7 +58,7 @@ export default function SearchControl({ onLocalResults }: SearchControlProps) {
     return (
         <div>
             <div className="bg-white shadow-md rounded-lg p-4">
-                <h2 className="text-xl font-bold mb-4">Add a Review</h2>
+                <h2 className="text-xl font-bold mb-4 text-gray-800">Add a Review</h2>
                 <form action={searchAction}>
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="query">
                         Find a restaurant
