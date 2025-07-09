@@ -49,6 +49,7 @@ export default function Map({ restaurants, searchResults }: MapProps) {
       ref={mapRef}
       center={[40.7128, -74.0060]} // NYC coordinates
       zoom={12}
+      zoomControl={false}
       style={{ height: '100%', width: '100%' }}
     >
       <TileLayer
