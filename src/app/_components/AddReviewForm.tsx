@@ -31,14 +31,14 @@ export default function AddReviewForm({ restaurantId }: AddReviewFormProps) {
 
   return (
     <form action={formAction} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <h2 className="text-2xl font-bold mb-4">Add a Review</h2>
+      <h2 className="text-2xl font-bold mb-4 text-gray-900">Add a Review</h2>
       <input type="hidden" name="restaurantId" value={restaurantId} />
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rating">
+        <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="rating">
           Rating (0-5)
         </label>
         <select
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
             id="rating"
             name="rating"
             required
@@ -51,11 +51,11 @@ export default function AddReviewForm({ restaurantId }: AddReviewFormProps) {
         </select>
       </div>
       <div className="mb-6">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="style">
+        <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="style">
           Style
         </label>
         <select
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
           id="style"
           name="style"
           required
@@ -74,30 +74,30 @@ export default function AddReviewForm({ restaurantId }: AddReviewFormProps) {
         <div className="mb-4">
             <label className="flex items-center">
                 <input type="checkbox" name="glass_with_ice" value="true" className="mr-2" />
-                <span className="text-gray-700 text-sm font-bold">Served with a glass of ice?</span>
+                <span className="text-gray-900 text-sm font-bold">Served with a glass of ice?</span>
             </label>
         </div>
       )}
       <div className="mb-4 flex flex-col gap-2">
         <label className="flex items-center">
             <input type="checkbox" name="lemon_wedge" value="true" className="mr-2" />
-            <span className="text-gray-700 text-sm font-bold">Lemon Wedge?</span>
+            <span className="text-gray-900 text-sm font-bold">Lemon Wedge?</span>
         </label>
         <label className="flex items-center">
             <input type="checkbox" name="lime_wedge" value="true" className="mr-2" />
-            <span className="text-gray-700 text-sm font-bold">Lime Wedge?</span>
+            <span className="text-gray-900 text-sm font-bold">Lime Wedge?</span>
         </label>
         <label className="flex items-center">
             <input type="checkbox" name="free_refills" value="true" className="mr-2" />
-            <span className="text-gray-700 text-sm font-bold">Free refills?</span>
+            <span className="text-gray-900 text-sm font-bold">Free refills?</span>
         </label>
       </div>
       <div className="mb-6">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="notes">
+        <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="notes">
           Notes (optional)
         </label>
         <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
             id="notes"
             name="notes"
             rows={3}
