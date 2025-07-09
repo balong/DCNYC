@@ -54,7 +54,7 @@ export default function HomePageClient({ allRestaurants }: { allRestaurants: Res
                 setRatingFilter={setRatingFilter}
             />
 
-            <div className="h-full md:pl-[33.333333%] lg:pl-[25%] relative">
+            <div className="h-full md:pl-[33.333333%] lg:pl-[25%] relative z-10">
                  <button 
                     onClick={() => setIsSidebarOpen(true)}
                     className="md:hidden absolute top-4 left-4 z-[1000] bg-white p-2 rounded-md shadow-lg"
