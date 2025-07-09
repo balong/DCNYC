@@ -48,7 +48,7 @@ export default function HomePageClient({ allRestaurants }: { allRestaurants: Res
         <div className="relative h-full md:grid md:grid-cols-3 lg:grid-cols-4">
             <button 
                 onClick={() => setIsSidebarOpen(true)}
-                className="md:hidden absolute top-2 left-2 z-20 bg-white p-2 rounded-md shadow-lg"
+                className="md:hidden absolute top-4 left-4 z-[1000] bg-white p-2 rounded-md shadow-lg"
                 aria-label="Open sidebar"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
