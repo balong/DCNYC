@@ -55,7 +55,7 @@ export default function HomePageClient({ allRestaurants }: { allRestaurants: Res
             />
             <button 
                 onClick={() => setIsSidebarOpen(true)}
-                className="md:hidden absolute top-4 left-4 z-[1000] bg-white p-2 rounded-md shadow-lg"
+                className={`md:hidden absolute top-4 left-4 z-[1000] bg-white p-2 rounded-md shadow-lg ${isSidebarOpen ? 'hidden' : ''}`}
                 aria-label="Open sidebar"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
