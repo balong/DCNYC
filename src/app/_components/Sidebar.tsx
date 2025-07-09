@@ -17,17 +17,23 @@ interface SidebarProps {
 export default function Sidebar({ isOpen, setIsOpen, onLocalResults, setStyleFilter, setRatingFilter }: SidebarProps) {
     return (
         <>
-            {/* Backdrop */}
+            {/* Backdrop for mobile */}
             <div 
                 className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity md:hidden ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setIsOpen(false)}
                 aria-hidden="true"
             />
+            
             {/* Sidebar */}
-            <div className={`fixed top-0 left-0 z-40 h-full w-4/5 max-w-sm transform transition-transform md:relative md:translate-x-0 md:col-span-1 lg:col-span-1 md:z-auto ${isOpen ? 'translate-x-0' : '-translate-x-full'} flex flex-col p-4 bg-gray-50 h-full overflow-y-auto space-y-6`}>
+            <div className={
+                `fixed top-0 left-0 z-40 h-full w-4/5 max-w-sm transform transition-transform 
+                ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
+                md:w-1/3 lg:w-1/4 md:translate-x-0
+                flex flex-col p-4 bg-gray-50 overflow-y-auto space-y-6`
+            }>
                 <div className="flex justify-between items-center md:hidden">
                     <h2 className="text-lg font-bold">Controls</h2>
-                    <button onClick={() => setIsOpen(false)}>&times;</button>
+                    <button onClick={() => setIsOpen(false)} className="text-2xl font-bold">&times;</button>
                 </div>
                 <SearchControl onLocalResults={onLocalResults} />
                 <div className="space-y-4">
