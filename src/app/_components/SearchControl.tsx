@@ -95,7 +95,7 @@ export default function SearchControl({ onLocalResults }: SearchControlProps) {
 
                 {showManualForm && (
                     <div className="mt-6 pt-4 border-t">
-                         <h3 className="text-lg font-semibold mb-2 text-gray-800">Can't find it?</h3>
+                         <h3 className="text-lg font-semibold mb-2 text-gray-800">Can&apos;t find it?</h3>
                         <ManualAddForm />
                     </div>
                 )}
