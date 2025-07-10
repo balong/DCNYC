@@ -35,6 +35,18 @@ export default function AboutPage() {
       question: 'What will you do if I make a Diet Coke review website for my own town?',
       answer: 'Dark web hitman.',
     },
+    {
+      question: 'Who is this website for?',
+      answer: 'Cuties. Hotties. The mentally ill.',
+    },
+    {
+      question: "Why'd you cheap out on the .co domain?",
+      answer: "Because the good people at Diet Coke haven't shipped me a crate of gold krugerrands yet.",
+    },
+    {
+      question: 'How can I contact you?',
+      answer: 'Stand on a tall building facing West and crack open an ice-cold DC can. Then email contactNYCDC@gmail.com',
+    },
   ];
 
   return (
