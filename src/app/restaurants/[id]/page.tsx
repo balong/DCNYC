@@ -3,11 +3,26 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ReviewSection from '@/app/_components/ReviewSection';
 import { type Review } from '@/app/_lib/types';
+import { type Metadata } from 'next';
 
-// Define the type for the props, acknowledging params is a Promise in Next.js 15+
 type RestaurantPageProps = {
   params: Promise<{ id: string }>;
 };
+
+export async function generateMetadata({ params }: RestaurantPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const supabase = createClient();
+
+  const { data: restaurant } = await supabase
+    .from('restaurants')
+    .select('name')
+    .eq('id', id)
+    .single();
+
+  return {
+    title: `${restaurant?.name || 'Restaurant'} | DCNYC`,
+  };
+}
 
 export default async function RestaurantPage(props: RestaurantPageProps) {
   // Await the params promise to get the actual values
