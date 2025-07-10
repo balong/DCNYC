@@ -1,7 +1,9 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
 import { RestaurantWithDetails } from '../_lib/types';
 import { Style } from './FilterControls';
 import Sidebar from './Sidebar';
@@ -11,6 +13,21 @@ export default function HomePageClient({ allRestaurants }: { allRestaurants: Res
     const [styleFilter, setStyleFilter] = useState<Style | 'all'>('all');
     const [ratingFilter, setRatingFilter] = useState(0);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        const supabase = createClient();
+        const channel = supabase
+            .channel('reviews')
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'reviews' }, () => {
+                router.refresh();
+            })
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    }, [router]);
 
     // This complex memo hook is now the heart of our filtering logic
     const filteredRestaurants = useMemo(() => {
