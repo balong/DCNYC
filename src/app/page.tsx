@@ -12,6 +12,11 @@ export default async function Home() {
         <div className="text-center">
             <h1 className="text-4xl font-bold font-serif text-gray-900">DCNYC</h1>
             <p className="text-sm text-gray-900 font-sans">New York Diet Coke Reviews</p>
+            <div className="mt-2">
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700">
+                Featured in Bloomberg
+              </span>
+            </div>
         </div>
         <Link href="/about" className="absolute top-1/2 right-4 lg:right-6 -translate-y-1/2 text-sm text-gray-900 hover:text-black font-sans">
           About
