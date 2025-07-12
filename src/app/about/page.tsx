@@ -45,7 +45,7 @@ export default function AboutPage() {
     },
     {
       question: 'How can I contact you?',
-      answer: 'Stand on a tall building facing West and crack open an ice-cold DC can. Then email contactNYCDC@gmail.com',
+      answer: 'Stand on a tall building facing West and crack open an ice-cold DC can. Then email contactDCNYC@gmail.com',
     },
   ];
 
